@@ -13,12 +13,14 @@
     "@prisma/client": "^7.2.0",
     "@radix-ui/themes": "^3.2.1",
     "classname": "^0.0.0",
+    "easymde": "^2.20.0",
     "mariadb": "^3.4.5",
     "next": "16.1.1",
     "prisma": "^6.19.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "^5.5.0",
+    "react-simplemde-editor": "^5.2.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {
