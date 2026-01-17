@@ -1,5 +1,5 @@
 "use client";
-import { TextField, Button, Callout, Text } from "@radix-ui/themes";
+import { TextField, Button, Callout } from "@radix-ui/themes";
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
 import { Controller, useForm } from "react-hook-form";
@@ -10,18 +10,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema } from "@/app/validationSchemas";
 import z from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
+import Spinner from "@/app/components/Spinner";
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 
-type IssueForm = z.infer<typeof createIssueSchema>
+type IssueForm = z.infer<typeof createIssueSchema>;
 
 const NewIssuePage = () => {
   const [error, setError] = useState("");
   const router = useRouter();
-  const { register, control, handleSubmit, formState: {errors} } = useForm<IssueForm>({
-    resolver: zodResolver(createIssueSchema)
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IssueForm>({
+    resolver: zodResolver(createIssueSchema),
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   return (
     <div className="max-w-xl">
       {error && (
@@ -33,10 +40,18 @@ const NewIssuePage = () => {
         className=" space-y-3"
         onSubmit={handleSubmit(async (data) => {
           try {
-            await axios.post("/api/issues", data);
+            setIsSubmitting(true);
+            await axios.post("/api/issue", data);
             router.push("/issues");
           } catch (error) {
-            setError("An unexpected error occurred");
+            setIsSubmitting(false);
+            if (axios.isAxiosError(error) && error.response) {
+              setError(
+                error.response.data?.message || "An unexpected error occurred",
+              );
+            } else {
+              setError("An unexpected error occurred");
+            }
           }
         })}
       >
@@ -50,7 +65,9 @@ const NewIssuePage = () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button>Submit New Issue</Button>
+        <Button disabled={isSubmitting}>
+          Submit New Issue {isSubmitting && <Spinner />}
+        </Button>
       </form>
     </div>
   );
