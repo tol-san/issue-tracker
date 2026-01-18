@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Spinner = () => {
   return (
     <div
@@ -11,6 +9,6 @@ const Spinner = () => {
       </span>
     </div>
   );
-}
+};
 
-export default Spinner
+export default Spinner;

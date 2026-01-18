@@ -1,23 +1,25 @@
+import { Skeleton } from '@/app/components';
 import { Table } from '@radix-ui/themes';
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import IssueActions from './IssueActions';
 
 const IssueLoadingPage = () => {
 
   const issues = [1, 2, 3, 4, 5, 6]
-  return (<div>
-    <IssueActions/>
-    
+  return (
+    <div>
+      <IssueActions />
+
       <Table.Root variant="surface">
         <Table.Header>
-          <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell className=" hidden md:table-cell">
-            Status
-          </Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell className=" hidden md:table-cell">
-            Created
-          </Table.ColumnHeaderCell>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className=" hidden md:table-cell">
+              Status
+            </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className=" hidden md:table-cell">
+              Created
+            </Table.ColumnHeaderCell>
+          </Table.Row>
         </Table.Header>
         <Table.Body>
           {issues.map((issue) => (
@@ -39,7 +41,7 @@ const IssueLoadingPage = () => {
           ))}
         </Table.Body>
       </Table.Root>
-  </div>
+    </div>
   );
 }
 
