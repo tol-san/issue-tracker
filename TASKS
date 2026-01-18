@@ -28,8 +28,14 @@
 
     + Styling the issue detail page
 
----------------------------------------------------
+    + Adding markdonw preview
+    - npm i react-markdown
+    - npm install -D @tailwindcss/typography
+    - add @plugin "@tailwindcss/typography"; to global.css
+    
 
+---------------------------------------------------
+ 
 
 
 
