@@ -1,0 +1,6 @@
+---------------------------------------------------
+    + Adding loading skeleton
+    - npm i delay
+    - npm i react-loading-skeleton
+    - create file loading.tsx in issue
+    - copy table from issue page to loading page and solve some error 
