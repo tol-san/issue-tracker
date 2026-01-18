@@ -4,3 +4,29 @@
     - npm i react-loading-skeleton
     - create file loading.tsx in issue
     - copy table from issue page to loading page and solve some error 
+
+
+    + Showing issue details
+    - 'BABY STEP'
+    - create [id] folder
+    - add page IssueDetailPage
+    Prop -> {params: {id: string}}
+
+    - prisma.issue.findUnique({ where: {id: parseInt(param.id)} }) 
+
+    if not found -> notFound();
+    - issue.title
+    - issue.description
+    - issue.status
+    - issue.createdAt.toDateString()
+
+    - add link component in issue page
+    - set href to `/issue/${issue.id}`
+
+    - add loading file in [id] and also for new
+
+---------------------------------------------------
+
+
+
+

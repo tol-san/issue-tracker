@@ -6,6 +6,7 @@ import React from 'react'
 import IssueStatusBadge from '../components/IssueStatusBadge'
 import IssueActions from "./IssueActions";
 import delay from 'delay'
+import Link from 'next/link';
 
 const IssuePage = async () => {
 
@@ -14,22 +15,24 @@ const IssuePage = async () => {
 
   return (
     <div>
-     <IssueActions/>
+      <IssueActions />
       <Table.Root variant="surface">
         <Table.Header>
-          <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell className=" hidden md:table-cell">
-            Status
-          </Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell className=" hidden md:table-cell">
-            Created
-          </Table.ColumnHeaderCell>
+          <Table.Row>
+            <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className=" hidden md:table-cell">
+              Status
+            </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className=" hidden md:table-cell">
+              Created
+            </Table.ColumnHeaderCell>
+          </Table.Row>
         </Table.Header>
         <Table.Body>
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                {issue.title}
+                <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
                 <div className=" block md:hidden">
                   {" "}
                   <IssueStatusBadge status={issue.status} />
