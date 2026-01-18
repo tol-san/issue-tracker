@@ -32,6 +32,15 @@
     - npm i react-markdown
     - npm install -D @tailwindcss/typography
     - add @plugin "@tailwindcss/typography"; to global.css
+
+    + Build a link style compoent
+    - create compoent Link
+    - import NextLink from 'next/link'
+    - import {Link as RadixLink } from ...
+    - <NextLink href passHref legacyBehavior>
+        <RadixLink>{children}</RadixLink>
+       </NextLink>
+    -
     
 
 ---------------------------------------------------
